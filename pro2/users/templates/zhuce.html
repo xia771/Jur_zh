@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+       .container {
+            width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            color: #666;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>注册</h1>
+        <form method="post">
+             {% csrf_token %}
+            <fieldset>
+                <legend>账户信息</legend>
+                <label for="username">用户名：</label>
+                <input type="text" id="username" name="username" required><br>
+                <label for="password">密码：</label>
+                <input type="password" id="password" name="password" required><br>
+                <label for="confirm_password">确认密码：</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </fieldset>
+            <fieldset>
+                <legend>个人信息</legend>
+                <label for="phone">手机号：</label>
+                <input type="text" id="phone" name="phone"><br>
+                <label for="address">家庭住址：</label>
+                <input type="text" id="address" name="address"><br>
+                <label for="hobbies">爱好：</label>
+                <input type="text" id="hobbies" name="hobbies"><br>
+                <label for="introduction">个人介绍：</label>
+                <input type="text" import="text" id="introduction" name="introduction"><br>
+                <input type="submit" value="注册">
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>

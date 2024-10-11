@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章列表</title>
+</head>
+<body>
+<h1>文章列表</h1>
+    {% for post in page_obj %}
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content|truncatewords:10 }}</p>
+        <a href="{% url 'post_detail' post.pk %}">阅读全文</a>
+    {% endfor %}
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">旧</a>
+    {% endif %}
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">新</a>
+    {% endif %}
+</body>
+</html>

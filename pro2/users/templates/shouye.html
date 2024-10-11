@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>菜鸟客栈</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 50px 0;
+            font-size: 48px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
+            text-shadow: 0 0 5px #fff;
+        }
+
+
+        .button {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #fff;
+            color: #4CAF50;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .content {
+            width: 80%;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            line-height: 1.8;
+            transition: transform 0.3s;
+        }
+
+        .content:hover {
+            transform: translateY(-5px);
+        }
+
+        .content h2 {
+            margin-bottom: 20px;
+            color: #4CAF50;
+            font-size: 32px;
+        }
+
+        .content img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .content img:hover {
+            transform: scale(1.02);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar {
+            width: 25%;
+            float: right;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #4CAF50;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #4CAF50;
+        }
+
+        @media (max-width: 768px) {
+            .content, .sidebar {
+                width: 100%;
+                float: none;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">关于我们</a></li>
+            <li><a href="#">服务</a></li>
+            <li><a href="#">联系我们</a></li>
+            <li><a href="#">博客</a></li>
+        </ul>
+
+    </nav>
+    <h1>"菜鸟客栈：开启探索新世界的大门！"</h1>
+    <div class="content">
+        <h2>最新科技新闻</h2>
+
+        <h3>1. 人工智能的新突破</h3>
+        <img src="images/ai.jpg" alt="人工智能">
+        <p>最近，研究人员在深度学习领域取得了重大进展，推出了新一代的AI模型，能够更准确地理解自然语言，并进行复杂的对话。这项技术可能会在医疗、教育和客户服务等多个领域产生深远影响。</p>
+
+        <h3>2. 量子计算的进展</h3>
+        <img src="images/lizi.jpg" alt="量子计算">
+        <p>某知名科技公司宣布，他们的量子计算机已成功解决了一个传统计算机无法完成的复杂问题。这标志着量子计算在解决特定行业挑战方面的潜力开始显现。</p>
+
+        <h3>3. 可穿戴设备的未来</h3>
+        <img src="images/shebei.jpg" alt="可穿戴设备">
+        <p>随着健康监测需求的增加，多个品牌推出了新的可穿戴设备，具备更先进的健康追踪功能，包括血糖监测、心电图和睡眠分析。这些设备不仅提升了用户的健康管理能力，还推动了数字医疗的发展。</p>
+
+        <h3>4. 电动汽车的新技术</h3>
+        <img src="images/car.jpg" alt="电动汽车">
+        <p>电动车行业正在快速发展，最新推出的电动车型不仅续航里程大幅提升，还引入了快速充电技术，使得充电时间缩短至30分钟内，进一步提高了用户体验。</p>
+
+        <h3>5. 虚拟现实与增强现实的结合</h3>
+        <img src="images/VR.jpg" alt="虚拟现实与增强现实">
+        <p>虚拟现实（VR）和增强现实（AR）技术正在融合，新的应用程序可以在用户的真实环境中叠加虚拟对象，为游戏和教育提供了更多可能性。这种技术的发展将改变人们的互动方式。</p>
+
+        <a href="#" class="button">查看更多</a>
+    </div>
+
+    <div class="sidebar">
+        <h3>热门话题</h3>
+        <ul>
+            <li><a href="#">AI对社会的影响</a></li>
+            <li><a href="#">量子计算的未来</a></li>
+            <li><a href="#">可持续能源技术</a></li>
+            <li><a href="#">5G技术的应用</a></li>
+            <li><a href="#">绿色科技</a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+
+    <footer>
+        <div class="footer-content">
+            <h3>联系我们</h3>
+            <p>如需了解更多信息，请发送邮件至 <a href="mailto:info@cainiaokezhan.com" style="color: #ccc;">info@cainiaokezhan.com</a></p>
+            <div class="footer-links">
+                <a href="#">隐私政策</a> |
+                <a href="#">使用条款</a> |
+                <a href="#">常见问题</a>
+            </div>
+            <p>&copy; 2024 菜鸟客栈. 保留所有权利。</p>
+        </div>
+    </footer>
+</body>
+
+</html>
