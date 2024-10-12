@@ -25,7 +25,10 @@ def add_comment(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     if request.method == 'POST':
         content = request.POST.get('content')
-        author = request.user
-        Comment.objects.create(content=content, author=author, post=post)
+        if request.user.is_authenticated:
+            Comment.objects.create(content=content, author_user=request.user, post=post)
+        else:
+            anonymous_name = request.POST.get('anonymous_name')
+            Comment.objects.create(content=content, anonymous_name=anonymous_name, post=post)
         return redirect('post_detail', post_id)
     return render(request, 'add_comment.html', {'post': post})

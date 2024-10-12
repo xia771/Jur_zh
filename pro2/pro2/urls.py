@@ -23,6 +23,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('users/', include('users.urls')),
     # path('',index,name='index'),
-    path('boke/',include('boke.urls'))
+    path('',include('boke.urls'))
 
 ]
