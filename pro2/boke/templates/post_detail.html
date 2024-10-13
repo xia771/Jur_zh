@@ -6,111 +6,117 @@
     <title>{{ post.title }}</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            padding: 20px;
-        }
-
-        h1 {
+            background: linear-gradient(to bottom right, skyblue, lightcyan);
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
             color: #333;
-            text-align: center;
         }
 
-      .post {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+       .main-content {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-      .post h2 {
-            margin-top: 0;
-            font-size: 24px;
+       .post-title {
             color: #4CAF50;
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-      .post p {
+       .post-details {
             color: #666;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+       .comments-title {
+            color: #2196F3;
+            font-size: 28px;
+            border-bottom: 3px solid #E0E0E0;
+            padding-bottom: 15px;
+            margin-top: 30px;
+        }
+
+       .comment-item {
+            background-color: #eee;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+       .comment-content {
+            color: #333;
+            font-size: 18px;
             line-height: 1.6;
         }
 
-      .comments {
-            margin-top: 20px;
+       .comment-author {
+            color: #777;
+            font-size: 16px;
+            margin-top: 10px;
         }
 
-      .comment {
-            background-color: #eee;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-      .comment p {
-            margin: 0;
-            color: #333;
-        }
-
-      .add-comment {
-            margin-top: 20px;
-        }
-
-      .add-comment h3 {
-            font-size: 20px;
+       .add-comment-title {
             color: #4CAF50;
+            font-size: 24px;
+            margin-top: 40px;
         }
 
-      .add-comment form {
-            display: flex;
-            flex-direction: column;
-        }
-
-      .add-comment textarea {
+       .add-comment-form textarea {
             resize: none;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 10px;
+            padding: 15px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
         }
 
-      .add-comment input[type="submit"] {
-            padding: 10px 20px;
-            background-color: #4CAF50;
+       .add-comment-form input[type="submit"] {
+            padding: 12px 25px;
+            background-color: #2196F3;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+       .add-comment-form input[type="submit"]:hover {
+            background-color: #1976D2;
         }
     </style>
 </head>
 
 <body>
-    <div class="post">
-        <h1>{{ post.title }}</h1>
+    <div class="main-content">
+        <h1 class="post-title">{{ post.title }}</h1>
+        <p class="post-details">作者: {{ post.author.username }} | 发表时间: {{ post.pub_date|date:"F j, Y" }}</p>
         <p>{{ post.content }}</p>
-        <p>作者: {{ post.author.username }}</p>
-        <p>发表时间: {{ post.pub_date|date:"F j, Y" }}</p>
-    </div>
-    <div class="comments">
-        <h2>评论</h2>
+        <h2 class="comments-title">评论</h2>
         {% for comment in comments %}
-        <div class="comment">
-            <p>{{ comment.content }}</p>
-            <p>By: {{ comment.author.username }}</p>
+        <div class="comment-item">
+            <p class="comment-content">{{ comment.content }}</p>
+            <p class="comment-author">By: {{ comment.author.username }}</p>
         </div>
         {% endfor %}
-    </div>
-    <div class="add-comment">
-        <h3>添加评论</h3>
-        <form method="post" action="{% url 'add_comment' post.pk %}">
-            {% csrf_token %}
-            <textarea name="content" rows="4" cols="50"></textarea><br>
-            <input type="submit" value="Submit">
-        </form>
+        <div class="add-comment">
+            <h3 class="add-comment-title">添加评论</h3>
+            <form method="post" action="{% url 'add_comment' post.pk %}">
+                {% csrf_token %}
+                <textarea name="content" rows="4" cols="50"></textarea><br>
+                <input type="submit" value="提交">
+            </form>
+        </div>
     </div>
 </body>
 
 </html>
-
-
-

@@ -64,7 +64,7 @@
     </style>
 </head>
 <body>
-    <h1>文章列表</h1>
+    <h1>我的读书博客</h1>
     {% for post in page_obj %}
     <div class="post">
         <h2>{{ post.title }}</h2>
@@ -74,10 +74,10 @@
     {% endfor %}
     <div class="pagination">
         {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">旧</a>
+            <a href="?page={{ page_obj.previous_page_number }}">上一页</a>
         {% endif %}
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">新</a>
+            <a href="?page={{ page_obj.next_page_number }}">下一页</a>
         {% endif %}
     </div>
 </body>

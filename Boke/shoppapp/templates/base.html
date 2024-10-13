@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}电子商城{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 30px;
+        }
+        #product-list {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+       .action-links {
+            display: flex;
+            gap: 10px;
+        }
+        #add-product-link,
+        #cart-link {
+            display: block;
+            text-align: center;
+            color: #fff;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+   <h1>电子商城首页</h1>
+   {% block content %}
+   <p>这里是我们的电子商城，提供各种优质商品。</p>
+   <div id="product-list">
+       <ul>
+           {% for product in products %}
+           <li>
+               {{ product.name }} - {{ product.price }}
+               <div class="action-links">
+                   <a href="{% url 'edit_product' product.id %}">编辑商品</a>
+                   <a href="{% url 'view_product' product.id %}">查看商品信息</a>
+                   <a href="{% url 'delete_product' product.id %}">删除商品</a>
+               </div>
+           </li>
+           {% endfor %}
+       </ul>
+   </div>
+   <a id="add-product-link" href="{% url 'add_product' %}">添加商品</a>
+   <a id="cart-link" href="{% url 'cart' %}">购物车</a>
+   {% endblock %}
+</body>
+</html>

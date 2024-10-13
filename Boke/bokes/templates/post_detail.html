@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
             justify-content: center;
         }
 
-        .container {
+       .container {
             max-width: 800px;
             width: 100%;
             background-color: #fff;
@@ -38,7 +39,7 @@
             margin-bottom: 20px;
         }
 
-        .comments {
+       .comments {
             background-color: #f9f9f9;
             border-radius: 8px;
             padding: 20px;
@@ -46,50 +47,89 @@
             margin-top: 30px;
         }
 
-        .comments h3 {
+       .comments h3 {
             color: #3498db;
             margin-bottom: 20px;
             text-align: center;
         }
 
-        .comment {
+       .comment {
             border-bottom: 1px solid #eee;
             padding-bottom: 10px;
             margin-bottom: 15px;
             transition: background-color 0.3s ease;
         }
 
-        .comment:hover {
+       .comment:hover {
             background-color: #f1f1f1;
         }
 
-        .comment:last-child {
+       .comment:last-child {
             border-bottom: none;
         }
 
-        .comment-author {
+       .comment-author {
             font-weight: bold;
             color: #ff6f61;
         }
 
-        .comment p {
+       .comment p {
             margin: 0;
         }
 
+       .add-comment-title {
+            color: #4CAF50;
+            font-size: 24px;
+            margin-top: 40px;
+        }
+
+       .add-comment-form textarea {
+            resize: none;
+            padding: 15px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+       .add-comment-form input[type="submit"] {
+            padding: 12px 25px;
+            background-color: #2196F3;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+       .add-comment-form input[type="submit"]:hover {
+            background-color: #1976D2;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>{{ post.title }}</h1>
         <p>{{ post.content }}</p>
         <div class="comments">
             <h3>评论</h3>
-            {% for comment in post.comments.all %}
-                <div class="comment">
-                    <p><span class="comment-author">{{ comment.author }}</span>: {{ comment.content }}</p>
-                </div>
+            {% for comment in comments %}
+            <div class="comment">
+                <p><span class="comment-author">{{ comment.author }}</span>: {{ comment.content }}</p>
+            </div>
             {% endfor %}
+        </div>
+        <div class="add-comment">
+            <h3 class="add-comment-title">添加评论</h3>
+            <form method="post">
+                {% csrf_token %}
+                <textarea name="content" rows="4" cols="50"></textarea><br>
+                <input type="submit" value="提交">
+            </form>
         </div>
     </div>
 </body>
+
 </html>

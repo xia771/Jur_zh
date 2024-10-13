@@ -3,66 +3,71 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Add Comment to {{ post.title }}</title>
+    <title>添加评论 {{ post.title }}</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            padding: 20px;
-        }
-
-        h1 {
+            background: linear-gradient(to bottom right, skyblue, lightcyan);
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
             color: #333;
+        }
+
+      .main-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+      .form-title {
+            color: #4CAF50;
+            font-size: 28px;
             text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        textarea {
-            resize: none;
+      .form-input {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 10px;
+            padding: 15px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
         }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        input[type="submit"] {
-            padding: 10px 20px;
-            background-color: #4CAF50;
+      .form-submit-btn {
+            padding: 12px 25px;
+            background-color: #2196F3;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+      .form-submit-btn:hover {
+            background-color: #1976D2;
         }
     </style>
 </head>
 
 <body>
-    <h1>Add Comment to {{ post.title }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        <textarea name="content" rows="4" cols="50" placeholder="Your comment..."></textarea><br>
-        {% if not request.user.is_authenticated %}
-        <input type="text" name="anonymous_name" placeholder="Your name (if not logged in)"><br>
-        {% endif %}
-        <input type="submit" value="Submit">
-    </form>
+    <div class="main-container">
+        <h1 class="form-title">添加评论 {{ post.title }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            <textarea name="content" rows="4" cols="50" class="form-input" placeholder="你的评论..."></textarea><br>
+            {% if not request.user.is_authenticated %}
+            <input type="text" name="anonymous_name" class="form-input" placeholder="昵称（未登录）"><br>
+            {% endif %}
+            <input type="submit" value="提交" class="form-submit-btn">
+        </form>
+    </div>
 </body>
 
 </html>

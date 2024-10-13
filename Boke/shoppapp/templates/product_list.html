@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}产品列表{% endblock %}
+
+{% block content %}
+    <h1>产品列表</h1>
+    <a href="{% url 'add_product' %}">添加商品</a>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.name }} - {{ product.price }} - Stock: {{ product.stock }}
+                <a href="{% url 'edit_product' product.id %}">编辑</a>
+                <a href="{% url 'delete_product' product.id %}">删除</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

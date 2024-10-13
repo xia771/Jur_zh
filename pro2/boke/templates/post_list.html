@@ -1,78 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>文章列表</title>
     <style>
-        #A1{
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        body{
-            background: skyblue;
-            font-family: Arial, sans-serif;
+        body {
+            background: linear-gradient(to bottom right, skyblue, lightcyan);
+            font-family: 'Open Sans', sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             color: #333;
         }
-        h1 {
-            text-align: center;
-            color: #0056b3;
-        }
-        .a1 {
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-        }
-                .a1 p {
-            font-size: 16px;
-            line-height: 1.5;
-            color: #666;
+
+        #A1 {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .a2 {
+        h1 {
             text-align: center;
+            color: #4CAF50;
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2196F3;
+            font-size: 28px;
+            border-bottom: 3px solid #E0E0E0;
+            padding-bottom: 15px;
+            margin-top: 30px;
+        }
+
+       .article {
+            margin-bottom: 40px;
+        }
+
+       .article h2 {
+            font-size: 24px;
+        }
+
+       .article p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #666;
             margin-top: 20px;
         }
 
-        .a2 a {
+       .read-more-btn {
             text-decoration: none;
-            color: #0056b3;
-            padding: 5px 10px;
-            border: 1px solid #0056b3;
-            border-radius: 3px;
-            margin: 0 5px;
+            color: #fff;
+            background-color: #2196F3;
+            padding: 12px 25px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            display: inline-block;
+            margin-top: 25px;
         }
 
-        .a2 a:hover {
-            background-color: #0056b3;
-            color: white;
+       .read-more-btn:hover {
+            background-color: #1976D2;
         }
 
+       .pagination {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+       .pagination a {
+            text-decoration: none;
+            color: #2196F3;
+            padding: 10px 20px;
+            border: 2px solid #2196F3;
+            border-radius: 12px;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+       .pagination a:hover {
+            background-color: #2196F3;
+            color: #fff;
+        }
     </style>
 </head>
+
 <body>
-<div id="A1">
-<h1>我的个人博客</h1>
-<h2>文章列表</h2>
-    {% for post in page_obj  %}
-        <div class="a1">
-    	<h2>{{ post.title }}</h2>
-        <p>{{ post.content|truncatewords:5 }}</p>
-        <a href="{% url 'post_detail' post.pk %}">阅读全文</a>
+    <div id="A1">
+        <h1>我的个人博客</h1>
+        <h2>文章列表</h2>
+        {% for post in page_obj %}
+        <div class="article">
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content|truncatewords:5 }}</p>
+            <a href="{% url 'post_detail' post.pk %}" class="read-more-btn">阅读全文</a>
         </div>
-    {% endfor %}
-    <div class="a2" >
-        {% if page_obj.has_previous %}
-        	<a href="?page={{ page_obj.previous_page_number }}">上一页</a>
-        {% endif %}
-        {% if page_obj.has_next %}
-        	<a href="?page={{ page_obj.next_page_number }}">下一页</a>
-        {% endif %}
+        {% endfor %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">上一页</a>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">下一页</a>
+            {% endif %}
+        </div>
     </div>
-</div>
 </body>
+
 </html>

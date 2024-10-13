@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "bokes",
+    "shoppapp",
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ ROOT_URLCONF = "Boke.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, 'bokes', 'templates')],
+        "DIRS": [os.path.join(BASE_DIR, 'bokes', 'templates'),os.path.join(BASE_DIR,'shoppapp/templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

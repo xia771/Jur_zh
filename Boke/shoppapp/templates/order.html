@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}创建订单{% endblock %}
+
+{% block content %}
+    <h1>创建订单</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Order</button>
+    </form>
+{% endblock %}

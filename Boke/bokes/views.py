@@ -1,8 +1,7 @@
-from django.shortcuts import render
 
 # Create your views here.
-from django.shortcuts import render, get_object_or_404
-from .models import Post
+from django.shortcuts import render, get_object_or_404,redirect
+from .models import Post, Comment
 from django.core.paginator import Paginator
 
 def post_list(request):
@@ -14,4 +13,8 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'post_detail.html', {'post': post})
+    comments = Comment.objects.filter(post=post)
+    if request.method == 'POST':
+        Comment.objects.create(post=post, content=request.POST['content'])
+        return redirect('post_detail', pk=post.pk)
+    return render(request, 'post_detail.html', {'post': post, 'comments': comments})

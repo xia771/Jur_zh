@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}删除商品{% endblock %}
+
+{% block content %}
+    <h1>删除商品</h1>
+    <p>是否删除： "{{ product.name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">删除</button>
+    </form>
+{% endblock %}
